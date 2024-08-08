@@ -14,6 +14,7 @@ export const MoviesList = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [itemsPerPage, setItemsPerPage] = useState<number>(8);
 
+  // useEffect pour charger les films et catégories lors du montage du composant.
   useEffect(() => {
     movies$
       .then((movies) => {
@@ -28,6 +29,7 @@ export const MoviesList = () => {
       });
   }, []);
 
+  // Mets à jour les catégories en fonction des films filtrés.
   const updateCategories = (movies: MovieTypes[]) => {
     const allCategories = Array.from(
       new Set(movies.map((movie) => movie.category))
@@ -35,24 +37,27 @@ export const MoviesList = () => {
     setCategories(allCategories);
   };
 
+  // Filtre les films en fonction des catégories sélectionnées.
   const filteredMovies =
     selectedCategories.length > 0
       ? movies.filter((movie) => selectedCategories.includes(movie.category))
       : movies;
 
+  // Calcul des films à afficher en fonction de la pagination.
   const indexOfLastMovie = currentPage * itemsPerPage;
   const indexOfFirstMovie = indexOfLastMovie - itemsPerPage;
   const currentMovies = filteredMovies.slice(
     indexOfFirstMovie,
     indexOfLastMovie
   );
-
   const totalPages = Math.ceil(filteredMovies.length / itemsPerPage);
 
+  // Gère l'affichage des détails d'un film.
   const handleShowDetails = (id: string) => {
     setShowDetailsId((prevId) => (prevId === id ? null : id));
   };
 
+  // Gère l'ajout/retrait d'un like sur un film.
   const handleLike = (id: string) => {
     setMovies((prevMovies) =>
       prevMovies.map((movie) => {
@@ -84,6 +89,7 @@ export const MoviesList = () => {
     );
   };
 
+  // Gère l'ajout/retrait d'un dislike sur un film.
   const handleDislike = (id: string) => {
     setMovies((prevMovies) => {
       const updatedMovies = prevMovies.map((movie) => {
@@ -117,6 +123,7 @@ export const MoviesList = () => {
     });
   };
 
+  // Supprime un film.
   const handleDelete = (id: string) => {
     setMovies((prevMovies) => {
       const updatedMovies = prevMovies.filter((movie) => movie.id !== id);
@@ -125,10 +132,12 @@ export const MoviesList = () => {
     });
   };
 
+  // Gère la sélection des catégories.
   const handleCategoryChange = (selectedOptions: any) => {
     setSelectedCategories(selectedOptions.map((option: any) => option.value));
   };
 
+  // Gère le changement du nombre de films par page.
   const handleItemsPerPageChange = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
@@ -136,12 +145,14 @@ export const MoviesList = () => {
     setCurrentPage(1);
   };
 
+  // Change le nombre de la page dans la pagination.
   const goToPage = (page: number) => {
     if (page >= 1 && page <= totalPages) {
       setCurrentPage(page);
     }
   };
 
+  // Styles personnalisés pour le composant de sélection de catégories.
   const customStyles = {
     control: (provided: any) => ({
       ...provided,
