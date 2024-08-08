@@ -29,12 +29,14 @@ export const MovieCard: FC<MovieCardProps> = ({
       <button className="delete-button" onClick={() => handleDelete(movie.id)}>
         <img src={icons.deleteIcon} alt="delete" />
       </button>
-      <img
-        className="movie-image"
-        src={movie.imageUrl}
-        alt={movie.title}
-        onClick={() => handleShowDetails(movie.id)}
-      />
+      <div className="movie-image-container">
+        <img
+          className="movie-image"
+          src={movie.imageUrl}
+          alt={movie.title}
+          onClick={() => handleShowDetails(movie.id)}
+        />
+      </div>
       <h2 className="movie-title">{movie.title}</h2>
       <p className="movie-category">{movie.category}</p>
       <div className="jauge-container">

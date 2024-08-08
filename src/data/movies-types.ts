@@ -1,13 +1,13 @@
 export interface MovieTypes {
-  id: string;
-  title: string;
   category: string;
-  likes: number;
-  dislikes: number;
-  liked: boolean;
   description: string;
-  releaseDate: string;
-  duration: string;
   disliked: boolean;
+  dislikes: number;
+  duration: string;
+  id: string;
   imageUrl: string;
+  liked: boolean;
+  likes: number;
+  releaseDate: string;
+  title: string;
 }

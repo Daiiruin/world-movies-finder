@@ -1,3 +1,5 @@
+import arrowLeft from "./arrowLeft.png";
+import arrowRight from "./arrowRight.png";
 import date from "./date.png";
 import deleteIcon from "./deleteIcon.png";
 import dislikeFilled from "./dislike-filled.png";
@@ -10,6 +12,8 @@ export const icons = {
   date,
   dislike,
   dislikeFilled,
+  arrowRight,
+  arrowLeft,
   deleteIcon,
   like,
   likeFilled,

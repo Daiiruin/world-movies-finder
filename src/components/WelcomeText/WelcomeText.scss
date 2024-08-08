@@ -1,0 +1,62 @@
+@import "../../style/variables";
+
+.animated-letters {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  background-color: $background-color;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  animation: fadeOutBackground 0.8s forwards;
+  animation-delay: 3.5s;
+  left: 0;
+  color: white;
+  gap: 10px;
+}
+
+@keyframes fadeOutBackground {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(100px);
+  font-weight: bold;
+  text-transform: uppercase;
+  animation: fadeInUp 0.8s forwards, fadeOutDown 0.8s forwards;
+  animation-delay: calc(var(--index) * 0.1s + 1s),
+    calc(var(--index) * 0.1s + 3.5s);
+  font-size: 76px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOutDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+}
