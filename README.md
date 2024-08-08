@@ -8,7 +8,7 @@ ReactJS, Typescript
 
 react-select
 
-## C'est quoi ce projet ❓❓
+## C'est quoi ce projet ❓
 
 **World Movies Finder** est une application web que j'ai du faire pour un test. Je vous le partage pour peut être vous inspirer ou vous aider ! J'ai commenté la plupart des fonctions et hook afin de vous aider à mieux comprendre ! Si vous avez des questions n'hésitez pas à me contacter.
 
